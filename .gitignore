@@ -1,7 +1,11 @@
-# Local library links; these point to external plugin installations.
+# Downloaded external skill repositories; their sources are tracked in
+# skills-sources.json, but their contents are not committed.
 /mattpocock
+/DeepResearch
 /yuanwang
 
 # Local Python cache.
 __pycache__/
 *.py[cod]
+/mattpocock/
+/DeepResearch/

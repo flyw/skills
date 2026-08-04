@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Synchronize skill folders from ~/.agents/library into ~/.agents/skills.
+# Synchronize skill folders from this library into a selected local skills directory.
 #
 # Each source at <library>/<group>/skills/<skill>/SKILL.md becomes a symlink:
 #   ~/.agents/skills/<group>-<skill> -> <library>/<group>/skills/<skill>
@@ -7,7 +7,26 @@
 set -euo pipefail
 
 LIBRARY_DIR="$(cd "$(dirname "$0")" && pwd -P)"
-SKILLS_DIR="$(cd "$LIBRARY_DIR/.." && pwd -P)/skills"
+
+printf 'Where should the skill links be installed?\n'
+printf '  1) %s/.agents/skills\n' "$HOME"
+printf '  2) %s/.codex/skills\n' "$HOME"
+while true; do
+  read -r -p 'Choose [1/2]: ' choice
+  case "$choice" in
+    1)
+      SKILLS_DIR="$HOME/.agents/skills"
+      break
+      ;;
+    2)
+      SKILLS_DIR="$HOME/.codex/skills"
+      break
+      ;;
+    *)
+      printf 'Please choose 1 or 2.\n' >&2
+      ;;
+  esac
+done
 
 mkdir -p "$SKILLS_DIR"
 

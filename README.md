@@ -5,7 +5,9 @@ This repository contains a curated collection of reusable agent skills and the t
 ## Repository layout
 
 - [`flyw/`](flyw/) — the bundled plugin and its skills.
-- [`install.py`](install.py) — installs the bundled plugin into a local agent plugins directory.
+- [`install_mattpocock.py`](install_mattpocock.py) — downloads and flattens Matt Pocock's skills.
+- [`install_deep_research.py`](install_deep_research.py) — downloads Deep Research skills.
+- [`skills-sources.json`](skills-sources.json) — tracked list of downloaded sources; downloaded repositories themselves are ignored.
 - [`sync-skills.sh`](sync-skills.sh) — synchronizes local skill links from the library into the local skills directory.
 
 ## What's included
@@ -37,20 +39,36 @@ This repository contains a curated collection of reusable agent skills and the t
 ## Install
 
 ```bash
-python3 install.py
+python3 install_mattpocock.py
+python3 install_deep_research.py
 ```
 
-Preview the installation first:
+By default this downloads these repositories into the project directory:
+
+- `https://github.com/mattpocock/skills` → `./mattpocock`
+- `https://github.com/Weizhena/Deep-Research-skills` → `./DeepResearch`
+
+Running the command again downloads the latest version and replaces the
+existing directory:
 
 ```bash
-python3 install.py --dry-run
+python3 install_mattpocock.py --dry-run
+python3 install_deep_research.py --dry-run
 ```
 
 To install into another plugin directory:
 
 ```bash
-python3 install.py --target-dir /path/to/plugins
+python3 install_mattpocock.py --target-dir /path/to/plugins
+python3 install_deep_research.py --target-dir /path/to/plugins
 ```
+
+The `mattpocock` repository is normalized during download: skill folders are
+moved from category directories such as `skills/engineering/` directly into
+`mattpocock/skills/`.
+
+`DeepResearch` keeps only the repository's `skills/research-codex-en` variant
+and installs it as `DeepResearch/skills/`.
 
 After installation, skills are available under the `flyw:` namespace. For example:
 
@@ -59,6 +77,15 @@ flyw:blueprint
 flyw:query-intent-alignment
 flyw:agent-ticket-verifier
 ```
+
+To create skill links, run:
+
+```bash
+./sync-skills.sh
+```
+
+At startup it asks whether links should be placed in `~/.agents/skills` or
+`~/.codex/skills`.
 
 ## Design principles
 
