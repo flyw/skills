@@ -6,25 +6,25 @@ These skills help agents turn ambiguous requests into aligned plans, make archit
 
 ## What's included
 
-### Planning and alignment
+### Agent ticket workflow
 
-- **blueprint** — Aligns context and scope before implementation, refactoring, or architectural changes.
-- **project-ideation-alignment** — Maps domain knowledge and clarifies intent at the beginning of a project.
-- **query-intent-alignment** — Expands underspecified requests and identifies missing constraints.
 - **agent-ticket-planner** — Breaks large or failure-prone changes into ordered implementation tickets.
+- **agent-ticket-executor** — Executes a single implementation ticket with repository provenance and evidence tracking.
+- **agent-ticket-verifier** — Independently checks completed work against scope and fresh evidence.
 
-### Reliability and safety
+### Intent alignment and cognitive safety
 
 - **cognitive-grounding-guard** — Encourages calibrated confidence and reduces unsupported assumptions.
 - **double-blind-circuit-breaker** — Pauses when ambiguity and uncertainty make execution unsafe.
-- **agent-ticket-verifier** — Independently checks completed work against scope and fresh evidence.
+- **project-ideation-alignment** — Maps domain knowledge and clarifies intent at the beginning of a project.
+- **query-intent-alignment** — Expands underspecified requests and identifies missing constraints.
 
-### Architecture and implementation
+### Architecture and design
 
+- **blueprint** — Aligns context and scope before implementation, refactoring, or architectural changes.
 - **pattern-composition** — Selects and combines design patterns for maintainable architectures.
-- **agent-ticket-executor** — Executes a single implementation ticket with repository provenance and evidence tracking.
 
-### Collaboration and knowledge management
+### Collaboration and project context
 
 - **human-in-the-loop-feedback** — Supports user intervention, intermediate review, and correction of session context.
 - **output-presentation-formatter** — Structures complex technical output for easier review.
