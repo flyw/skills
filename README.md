@@ -1,8 +1,8 @@
-# Flyw Skills
+# Skills
 
 A collection of modular AI agent skills for planning, collaboration, architecture, and reliable workflows.
 
-Flyw helps agents turn ambiguous requests into aligned plans, make architectural decisions explicit, introduce safety checks, and keep humans involved at the right points in the workflow.
+These skills help agents turn ambiguous requests into aligned plans, make architectural decisions explicit, introduce safety checks, and keep humans involved at the right points in the workflow.
 
 ## What's included
 
@@ -78,7 +78,7 @@ flyw:agent-ticket-verifier
 
 ## Status
 
-Flyw is an evolving collection of reusable agent skills. Interfaces and workflows may change as the skills are tested across different projects and agent environments.
+This is an evolving collection of reusable agent skills. Interfaces and workflows may change as the skills are tested across different projects and agent environments.
 
 ## Contributing
 
