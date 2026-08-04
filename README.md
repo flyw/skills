@@ -79,5 +79,3 @@ Contributions are welcome. Please keep each skill focused, document its trigger 
 ## License
 
 Licensed under the Apache License 2.0. See the plugin metadata for details.
-
-The bundled skills are documented in [`flyw/README.md`](flyw/README.md).
