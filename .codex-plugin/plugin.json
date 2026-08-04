@@ -1,0 +1,18 @@
+{
+  "name": "flyw",
+  "version": "1.0.0",
+  "description": "flyw",
+  "author": {
+    "name": "flyw"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "android",
+    "mobile",
+    "device",
+    "sdk",
+    "journeys",
+    "device"
+  ],
+  "skills": "./skills/"
+}

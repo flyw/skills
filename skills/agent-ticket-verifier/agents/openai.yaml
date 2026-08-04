@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agent Ticket Verifier"
+  short_description: "独立核验单张任务的范围、测试真实性与完成证据"
+  default_prompt: "Use $agent-ticket-verifier to independently verify one ready-for-verification ticket and decide whether it can be completed."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agent Ticket Executor"
+  short_description: "严格执行单张任务并提交独立验收所需的完整证据"
+  default_prompt: "Use $agent-ticket-executor to implement exactly one assigned ticket and hand off a provenance-backed DoD evidence ledger for independent verification."

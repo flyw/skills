@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agent Ticket Planner"
+  short_description: "将大型代码改动拆成可逐个交付并验收的智能体任务清单"
+  default_prompt: "Use $agent-ticket-planner to align this project change and generate ordered, independently executable agent tickets."
