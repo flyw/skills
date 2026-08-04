@@ -1,0 +1,7 @@
+# Local library links; these point to external plugin installations.
+/mattpocock
+/yuanwang
+
+# Local Python cache.
+__pycache__/
+*.py[cod]
