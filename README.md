@@ -15,8 +15,17 @@ This repository contains a curated collection of reusable agent skills and the t
 ### Agent ticket workflow
 
 - **agent-ticket-planner** — Breaks large or failure-prone changes into ordered implementation tickets.
+- **agent-initiative-orchestrator** — Coordinates ticket selection, Executor/Verifier sessions,
+  dependency gates, resumptions, and consequential user decisions across the initiative.
 - **agent-ticket-executor** — Executes a single implementation ticket with repository provenance and evidence tracking.
 - **agent-ticket-verifier** — Independently checks completed work against scope and fresh evidence.
+
+The ticket workflow is coordinated in this order: the planner creates the specification and
+dependency-ordered tickets; the orchestrator selects the next uncompleted ticket and starts or
+resumes the Executor; the Verifier independently checks tickets marked ready for verification;
+only verified `completed` tickets unlock their dependents. The orchestrator may ask the user only
+when a decision materially changes scope, behavior, risk, or authority, and otherwise resolves
+reversible details from repository evidence and safe defaults.
 
 ### Intent alignment and cognitive safety
 
