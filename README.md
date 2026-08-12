@@ -93,8 +93,7 @@ To copy and synchronize skills, run:
 ./sync-skills.sh
 ```
 
-At startup it asks whether skills should be placed in `~/.agents/skills` or
-`~/.codex/skills`.
+At startup it asks whether skills should be placed in `~/.agents/skills`, `~/.codex/skills`, or `~/.gemini/config/plugins`.
 
 ## Design principles
 
