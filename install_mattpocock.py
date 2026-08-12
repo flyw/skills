@@ -16,7 +16,7 @@ SOURCE_URL = "https://github.com/mattpocock/skills"
 INSTALL_NAME = "mattpocock"
 SOURCE_LIST = REPOSITORY_ROOT / "skills-sources.json"
 GITIGNORE = REPOSITORY_ROOT / ".gitignore"
-IGNORED_CATEGORIES = {"deprecated", "misc"}
+IGNORED_CATEGORIES = {"deprecated", "in-progress", "misc"}
 
 
 def parse_args() -> argparse.Namespace:
