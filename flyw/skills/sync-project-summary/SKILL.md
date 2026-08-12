@@ -1,15 +1,19 @@
 ---
 name: sync-project-summary
-description: Synchronize conversation context into GEMINI.md, one source record per conversation under docs/project-records/, and a progressively disclosed PROJECT.md aggregate. Use when the user asks to summarize, update, or sync project rules, working styles, decisions, requirements, progress, or other important project context.
+description: Synchronize conversation context into AGENTS.md, one source record per conversation under docs/project-records/, and a progressively disclosed PROJECT.md aggregate. Use when the user asks to summarize, update, or sync project rules, working styles, decisions, requirements, progress, or other important project context.
 ---
 
 # Sync Project Summary
 
-Preserve project context with per-conversation provenance. Store working rules in `./GEMINI.md`, create one detailed source record for each conversation under `./docs/project-records/`, and consolidate the current project view plus links to every record in `./PROJECT.md`.
+Preserve project context with per-conversation provenance. Store working rules in `./AGENTS.md`, create one detailed source record for each conversation under `./docs/project-records/`, and consolidate the current project view plus links to every record in `./PROJECT.md`.
+
+Before drafting or revising any output, invoke Matt Pocock's `$writing-for-agents` skill (`mattpocock-skills:writing-for-agents`) as the document-writing reference. Apply its information hierarchy and pruning rules: keep each durable fact or rule in one authoritative file, use direct context pointers for branch-specific detail, and give each phase and verification group a checkable completion criterion.
+
+Treat `AGENTS.md`, the conversation records, and `PROJECT.md` as documents consumed by future agents. Keep them concise, co-locate related material, and use imperative wording for instructions.
 
 ## File Responsibilities
 
-- **GEMINI.md — working contract only**: Store agent behavior, collaboration preferences, coding conventions, workflow rules, and interaction constraints. Never store project or feature descriptions here.
+- **AGENTS.md — working contract only**: Store agent behavior, collaboration preferences, coding conventions, workflow rules, and interaction constraints. Never store project or feature descriptions here.
 - **docs/project-records/*.md — conversation source records**: Store all durable, important context from one conversation in one file. Keep conversations separate so future readers can trace where decisions, requirements, and corrections came from.
 - **PROJECT.md — project aggregate and disclosure entry point**: Consolidate the current state derived from all conversation records. Include concise topic summaries and links to source records so readers can progressively disclose the underlying details.
 
@@ -17,7 +21,7 @@ Treat the conversation records as provenance sources and `PROJECT.md` as the cur
 
 ## Constraints
 
-- Limit `GEMINI.md` to at most 2 total edits per invocation. Count additions, modifications, and deletions together.
+- Limit `AGENTS.md` to at most 2 total edits per invocation. Count additions, modifications, and deletions together.
 - Perform no disk writes until the user explicitly approves the proposed changes.
 - Create exactly one source record for each distinct conversation being synchronized. Never combine separate conversations into one record.
 - When this skill is invoked again in the same conversation, update that conversation's existing record instead of creating duplicates.
@@ -60,7 +64,7 @@ Record the meaning and provenance of the conversation, not a turn-by-turn transc
 ### Phase 1: Extract and Classify
 
 1. Extract durable information from the full available conversation:
-   - Working-contract rules for `GEMINI.md`.
+   - Working-contract rules for `AGENTS.md`.
    - Important conversation context for a new or existing source record.
    - Current project knowledge that must be added to, changed in, or removed from the `PROJECT.md` aggregate.
 2. Identify the conversation topic and determine whether a record for this same conversation already exists. Prefer an explicit source marker or filename established earlier in the conversation; do not infer sameness from topic alone.
@@ -68,7 +72,7 @@ Record the meaning and provenance of the conversation, not a turn-by-turn transc
 
 ### Phase 2: Inspect Existing State
 
-1. Read `./GEMINI.md` and `./PROJECT.md`; treat missing files as empty.
+1. Read `./AGENTS.md` and `./PROJECT.md`; treat missing files as empty.
 2. List `./docs/project-records/*.md`; read the records relevant to the topics affected by the current conversation.
 3. Read all records only when required to rebuild or verify the full aggregate. Use headings, filenames, and links in `PROJECT.md` for progressive discovery first.
 4. Detect conflicts, stale aggregate statements, missing record links, duplicate conversation records, and broken paths or anchors.
@@ -77,7 +81,7 @@ Record the meaning and provenance of the conversation, not a turn-by-turn transc
 
 Prepare a structured proposal before writing:
 
-- **GEMINI.md**: Show at most 2 Add, Modify, or Delete edits.
+- **AGENTS.md**: Show at most 2 Add, Modify, or Delete edits.
 - **Conversation record**: Show the proposed filename and all important content to save. State whether it is a new file or an update to the current conversation's existing file.
 - **PROJECT.md**: Show how the cross-conversation aggregate and record index will change. Classify current-state changes as Add, Modify, or Delete, and identify any superseded statements.
 
@@ -108,7 +112,7 @@ Include every conversation record in the record index. Avoid copying detailed ra
 
 Ask for explicit approval of two independently selectable change groups:
 
-1. `GEMINI.md` working-contract changes.
+1. `AGENTS.md` working-contract changes.
 2. The coordinated project-context changes: the conversation record and `PROJECT.md`.
 
 Present the exact proposed delta for each group. Allow the user to approve, reject, or revise either group. Do not write any file while a required decision is pending.
@@ -117,7 +121,7 @@ Present the exact proposed delta for each group. Allow the user to approve, reje
 
 After approval:
 
-1. Apply only the approved `GEMINI.md` edits.
+1. Apply only the approved `AGENTS.md` edits.
 2. Create the approved conversation record, or update it only if it belongs to the same conversation.
 3. Reconcile `PROJECT.md` into an accurate cross-conversation synthesis and add the record to its index.
 4. Verify:
@@ -127,6 +131,6 @@ After approval:
    - Every conversation record appears in the `PROJECT.md` index.
    - Every relative link and section anchor resolves.
    - No unapproved changes were written.
-   - `GEMINI.md` contains only working-contract rules and no more than 2 edits were applied.
+   - `AGENTS.md` contains only working-contract rules and no more than 2 edits were applied.
 
 Report which files changed, the record created or updated, aggregate statements superseded, and whether all links were verified.
