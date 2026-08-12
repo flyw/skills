@@ -100,6 +100,33 @@ def flatten_skills(checkout: Path) -> None:
         shutil.rmtree(category)
 
 
+def create_plugin_configs(checkout: Path) -> None:
+    version_file = checkout / "installed_version.json"
+    version_file.write_text('{"version": "1.0.0"}\n', encoding="utf-8")
+
+    plugin_file = checkout / "plugin.json"
+    plugin_data = {
+        "name": INSTALL_NAME,
+        "version": "1.0.0",
+        "description": INSTALL_NAME,
+        "author": {
+            "name": INSTALL_NAME
+        },
+        "license": "Apache-2.0",
+        "keywords": [
+            "android",
+            "mobile",
+            "device",
+            "sdk",
+            "journeys",
+            "device"
+        ]
+    }
+    plugin_file.write_text(
+        json.dumps(plugin_data, indent=2) + "\n", encoding="utf-8"
+    )
+
+
 def main() -> int:
     args = parse_args()
     destination = args.target_dir.expanduser() / INSTALL_NAME
@@ -127,6 +154,7 @@ def main() -> int:
             ) from error
 
         flatten_skills(checkout)
+        create_plugin_configs(checkout)
         if destination.exists():
             shutil.rmtree(destination)
         checkout.rename(destination)
