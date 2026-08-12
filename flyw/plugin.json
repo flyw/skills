@@ -1,17 +1,21 @@
 {
   "name": "flyw",
   "version": "1.0.0",
-  "description": "flyw",
+  "description": "Agent ticket workflow, intent alignment, architecture blueprinting, cognitive safety, and project synchronization skills.",
   "author": {
     "name": "flyw"
   },
   "license": "Apache-2.0",
   "keywords": [
-    "android",
-    "mobile",
-    "device",
-    "sdk",
-    "journeys",
-    "device"
+    "agent-workflow",
+    "tickets",
+    "orchestrator",
+    "verifier",
+    "blueprint",
+    "cognitive-safety",
+    "architecture",
+    "alignment",
+    "skills"
   ]
 }
+

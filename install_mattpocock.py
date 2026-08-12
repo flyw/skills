@@ -108,18 +108,21 @@ def create_plugin_configs(checkout: Path) -> None:
     plugin_data = {
         "name": INSTALL_NAME,
         "version": "1.0.0",
-        "description": INSTALL_NAME,
+        "description": "Curated engineering skills for TDD, code review, codebase design, bug diagnosis, domain modeling, and prototyping.",
         "author": {
             "name": INSTALL_NAME
         },
         "license": "Apache-2.0",
         "keywords": [
-            "android",
-            "mobile",
-            "device",
-            "sdk",
-            "journeys",
-            "device"
+            "engineering",
+            "tdd",
+            "code-review",
+            "codebase-design",
+            "debugging",
+            "domain-modeling",
+            "prototyping",
+            "refactoring",
+            "skills"
         ]
     }
     plugin_file.write_text(

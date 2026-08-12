@@ -81,18 +81,20 @@ def create_plugin_configs(checkout: Path) -> None:
     plugin_data = {
         "name": INSTALL_NAME,
         "version": "1.0.0",
-        "description": INSTALL_NAME,
+        "description": "Deep research agent skills for topic outlining, multi-step deep research, item aggregation, and automated report generation.",
         "author": {
             "name": INSTALL_NAME
         },
         "license": "Apache-2.0",
         "keywords": [
-            "android",
-            "mobile",
-            "device",
-            "sdk",
-            "journeys",
-            "device"
+            "research",
+            "deep-research",
+            "literature-search",
+            "report-generation",
+            "analysis",
+            "synthesis",
+            "investigation",
+            "skills"
         ]
     }
     plugin_file.write_text(
