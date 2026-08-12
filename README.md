@@ -8,7 +8,7 @@ This repository contains a curated collection of reusable agent skills and the t
 - [`install_mattpocock.py`](install_mattpocock.py) — downloads and flattens Matt Pocock's skills.
 - [`install_deep_research.py`](install_deep_research.py) — downloads Deep Research skills.
 - [`skills-sources.json`](skills-sources.json) — tracked list of downloaded sources; downloaded repositories themselves are ignored.
-- [`sync-skills.sh`](sync-skills.sh) — synchronizes local skill links from the library into the local skills directory.
+- [`sync-skills.sh`](sync-skills.sh) — synchronizes skill folders from the library into the local skills directory.
 
 ## What's included
 
@@ -87,13 +87,13 @@ flyw:query-intent-alignment
 flyw:agent-ticket-verifier
 ```
 
-To create skill links, run:
+To copy and synchronize skills, run:
 
 ```bash
 ./sync-skills.sh
 ```
 
-At startup it asks whether links should be placed in `~/.agents/skills` or
+At startup it asks whether skills should be placed in `~/.agents/skills` or
 `~/.codex/skills`.
 
 ## Design principles

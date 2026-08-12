@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 # Synchronize skill folders from this library into a selected local skills directory.
 #
-# Each source at <library>/<group>/skills/<skill>/SKILL.md becomes a symlink:
-#   ~/.agents/skills/<group>-<skill> -> <library>/<group>/skills/<skill>
+# Each source at <library>/<group>/skills/<skill>/SKILL.md is copied to:
+#   ~/.agents/skills/<group>-<skill>
 
 set -euo pipefail
 
 LIBRARY_DIR="$(cd "$(dirname "$0")" && pwd -P)"
 
-printf 'Where should the skill links be installed?\n'
+printf 'Where should the skills be installed?\n'
 printf '  1) %s/.agents/skills\n' "$HOME"
 printf '  2) %s/.codex/skills\n' "$HOME"
 while true; do
@@ -30,21 +30,6 @@ done
 
 mkdir -p "$SKILLS_DIR"
 
-is_managed_link() {
-  local link_target
-  link_target="$(readlink "$1" 2>/dev/null || true)"
-  [[ "$link_target" == "$LIBRARY_DIR"/* ]]
-}
-
-# Rebuild all library-managed links from scratch on every run. Other skills in
-# ~/.agents/skills are left untouched.
-for entry in "$SKILLS_DIR"/*; do
-  if [[ -L "$entry" ]] && is_managed_link "$entry"; then
-    rm "$entry"
-    printf 'removed: %s\n' "$(basename "$entry")"
-  fi
-done
-
 for group_dir in "$LIBRARY_DIR"/*; do
   [[ -d "$group_dir/skills" && ! -L "$group_dir/skills" ]] || continue
 
@@ -54,14 +39,15 @@ for group_dir in "$LIBRARY_DIR"/*; do
 
     skill_dir="${skill_file%/SKILL.md}"
     skill_name="${skill_dir##*/}"
-    link_path="$SKILLS_DIR/$group_name-$skill_name"
+    target_path="$SKILLS_DIR/$group_name-$skill_name"
 
-    if [[ -e "$link_path" || -L "$link_path" ]]; then
-      printf 'skipped existing unmanaged path: %s\n' "$link_path" >&2
-      continue
+    if [[ -e "$target_path" || -L "$target_path" ]]; then
+      rm -rf "$target_path"
+      printf 'removed existing: %s\n' "$(basename "$target_path")"
     fi
 
-    ln -s "$skill_dir" "$link_path"
-    printf 'linked: %s\n' "$(basename "$link_path")"
+    cp -R "$skill_dir" "$target_path"
+    printf 'copied: %s\n' "$(basename "$target_path")"
   done
 done
+
