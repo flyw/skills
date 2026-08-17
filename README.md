@@ -45,6 +45,10 @@ reversible details from repository evidence and safe defaults.
 - **output-presentation-formatter** — Structures complex technical output for easier review.
 - **sync-project-summary** — Synchronizes project requirements and working agreements into `PROJECT.md` and `GEMINI.md`.
 
+### Android build & distribution
+
+- **apk-release-distributor** — Compiles Android applications (Debug / Release) and distributes APK packages to the unified APK Release Hub via REST API, providing multi-build auto-merging, download links, and wireless ADB installation commands.
+
 ## Install
 
 ```bash

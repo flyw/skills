@@ -43,3 +43,8 @@
 9. **`sync-project-summary`**
    - **说明**：工作契约与项目描述同步工具。从对话上下文中自动提取信息，维护 `./AGENTS.md`（工作契约，单次上限2条）与 `./PROJECT.md`（项目需求与架构）。
    - **应用场景**：用户请求总结、更新或同步项目规则、工作方式或项目上下文。
+
+10. **`apk-release-distributor`**
+    - **说明**：Android 应用编译打包与自动化分发工具。支持 Release / Debug 双版本统一分组管理、一键 REST API 发布、在线更新 Release Notes 及生成无线 ADB 安装指令。
+    - **应用场景**：Android 项目打包编译、内测/正式分发、双包合并发布。
+
