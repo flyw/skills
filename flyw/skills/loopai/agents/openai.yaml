@@ -1,0 +1,4 @@
+interface:
+  display_name: "LoopAI"
+  short_description: "Run and resume LoopAI ticket initiatives"
+  default_prompt: "Use $loopai to run or resume the current LoopAI ticket initiative."
