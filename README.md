@@ -37,12 +37,14 @@ reversible details from repository evidence and safe defaults.
 ### Architecture and design
 
 - **blueprint** — Aligns context and scope before implementation, refactoring, or architectural changes.
+- **grill-with-context** — Runs a repository-aware design interview using project guidance and conversation context.
 - **pattern-composition** — Selects and combines design patterns for maintainable architectures.
 
 ### Collaboration and project context
 
 - **human-in-the-loop-feedback** — Supports user intervention, intermediate review, and correction of session context.
 - **output-presentation-formatter** — Structures complex technical output for easier review.
+- **show-me** — Explains topics with user-approved Mermaid, ASCII, tables, diffs, or pseudocode visuals.
 - **sync-project-summary** — Synchronizes project requirements and working agreements into `PROJECT.md` and `GEMINI.md`.
 
 ### Android build & distribution
