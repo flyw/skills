@@ -1,0 +1,5 @@
+interface:
+  display_name: "Grill with Context"
+  short_description: "Grill a design against project constraints"
+policy:
+  allow_implicit_invocation: false
