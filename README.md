@@ -7,6 +7,7 @@ This repository contains a curated collection of reusable agent skills and the t
 - [`flyw/`](flyw/) — the bundled plugin and its skills.
 - [`install_mattpocock.py`](install_mattpocock.py) — downloads and flattens Matt Pocock's skills.
 - [`install_deep_research.py`](install_deep_research.py) — downloads Deep Research skills.
+- [`install_pstack.py`](install_pstack.py) — downloads and configures pstack skills.
 - [`skills-sources.json`](skills-sources.json) — tracked list of downloaded sources; downloaded repositories themselves are ignored.
 - [`sync-skills.sh`](sync-skills.sh) — synchronizes skill folders from the library into the local skills directory.
 
@@ -51,17 +52,27 @@ reversible details from repository evidence and safe defaults.
 
 - **apk-release-distributor** — Compiles Android applications (Debug / Release) and distributes APK packages to the unified APK Release Hub via REST API, providing multi-build auto-merging, download links, and wireless ADB installation commands.
 
+### Pstack (opinionated agent workflow & principles)
+
+- **poteto-mode** — Opinionated agent style: go deep first, write less but higher quality code, concise detailed responses, deliberate subagents, and verified work.
+- **architect & arena** — Parallel design exploration (`architect`) and competing candidate bakeoffs (`arena`).
+- **interrogate & thermo-nuclear reviews** — Multi-model adversarial review (`interrogate`), deep code quality audits, and PR review preparation.
+- **unslop & deslop** — Prose de-slopping, code cleanup before commit, and stripping low-signal commentary (`no-comments`).
+- **Engineering principles** — Laziness protocol, foundational thinking, attack the premise, subtract before you add, minimize reader load, test behavior not implementation, and 15+ other core principles.
+
 ## Install
 
 ```bash
 python3 install_mattpocock.py
 python3 install_deep_research.py
+python3 install_pstack.py
 ```
 
 By default this downloads these repositories into the project directory:
 
 - `https://github.com/mattpocock/skills` → `./mattpocock`
 - `https://github.com/Weizhena/Deep-Research-skills` → `./DeepResearch`
+- `https://github.com/michael-denyer/pstack-claude` → `./pstack`
 
 Running the command again downloads the latest version and replaces the
 existing directory:
@@ -69,6 +80,7 @@ existing directory:
 ```bash
 python3 install_mattpocock.py --dry-run
 python3 install_deep_research.py --dry-run
+python3 install_pstack.py --dry-run
 ```
 
 To install into another plugin directory:
@@ -76,6 +88,7 @@ To install into another plugin directory:
 ```bash
 python3 install_mattpocock.py --target-dir /path/to/plugins
 python3 install_deep_research.py --target-dir /path/to/plugins
+python3 install_pstack.py --target-dir /path/to/plugins
 ```
 
 The `mattpocock` repository is normalized during download: skill folders are
@@ -84,6 +97,9 @@ moved from category directories such as `skills/engineering/` directly into
 
 `DeepResearch` keeps only the repository's `skills/research-codex-en` variant
 and installs it as `DeepResearch/skills/`.
+
+`pstack` installs Lauren Tan's opinionated agent stack (ported by Michael Denyer)
+with 63 skills covering principles, parallel exploration, reviews, and hygiene.
 
 After installation, skills are available under the `flyw:` namespace. For example:
 
